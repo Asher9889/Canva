@@ -13,4 +13,6 @@ app.use(express.urlencoded({extended: true}))
 
 app.use("/api", apiRoutes);
 
-app.listen(config)
+app.listen(config.port, ()=>{
+    console.log(`Server starts listening from ${config.port}`)
+})

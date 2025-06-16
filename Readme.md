@@ -35,6 +35,7 @@
         - npm i express cors dotenv express-http-proxy google-auth-library helmet jsonwebtoken nodemon
     - upload-service 
         - npm i cloudinary cors dotenv express helmet jsonwebtoken mongoose nodemon multer
-    - design and subscription service
+    - design-service
         - npm i cors dotenv express helmet jsonwebtoken mongoose nodemon axios
-    -   
+    - subscription-service
+        - npm i express dotenv helmet nodemon mongoose 
