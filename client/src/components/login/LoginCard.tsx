@@ -1,3 +1,6 @@
+"use client"
+
+import { signIn } from "next-auth/react";
 import {
     Card,
     CardAction,
@@ -8,7 +11,14 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import "./index.css";
+
+
 const LoginCard = () => {
+
+    async function handleLoginClick() {
+        await signIn("google")
+    }
+
     return (
         <div className="relative w-[400px] mx-auto pt-[8%] ">
 
@@ -19,9 +29,9 @@ const LoginCard = () => {
                     <CardDescription className="w-[70%]">Use your email or another service to continue with Canva (it’s free)!</CardDescription>
                     {/* <CardAction>Card Action</CardAction> */}
                 </CardHeader>
-               <CardContent>
-                  
-                    <button className="w-full  py-2 rounded-[6px] text-sm  font-semibold mx-auto bg-[var(--card-bg-color)] cursor-pointer border-[1px] border-zinc-700 hover:bg-zinc-700 transition-all duration-300">Login with google</button>
+                <CardContent>
+
+                    <button onClick={() => handleLoginClick()} className="w-full  py-2 rounded-[6px] text-sm  font-semibold mx-auto bg-[var(--card-bg-color)] cursor-pointer border-[1px] border-zinc-700 hover:bg-zinc-700 transition-all duration-300">Login with google</button>
                 </CardContent>
                 {/* <CardFooter>
                     <p>Card Footer</p>
