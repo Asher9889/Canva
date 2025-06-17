@@ -11,6 +11,7 @@ type Config = {
     designURL: string;
     uploadURL: string;
     subscriptionURL: string;
+    authGoogleId: string;
 }
 
 
@@ -27,6 +28,7 @@ const config:Config = {
     designURL: String(process.env.DESIGN),
     uploadURL: String(process.env.UPLOAD),
     subscriptionURL: String(process.env.SUBSCRIPTION),
+    authGoogleId: String(process.env.AUTH_GOOGLE_ID),
 }
 
 export default config;

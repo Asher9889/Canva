@@ -1,3 +1,4 @@
+import authMiddleware from "./auth.middleware";
 import globalErrorHandler from "./globalErrorHandler";
 
-export { globalErrorHandler }
+export { globalErrorHandler, authMiddleware }
