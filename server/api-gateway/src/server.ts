@@ -6,7 +6,7 @@ import proxy from "express-http-proxy";
 import config from "./config";
 import { ApiErrorResponse } from "./utils";
 import { StatusCodes } from "http-status-codes";
-import { globalErrorHandler } from "./middlewares";
+import { globalErrorHandler, authMiddleware } from "./middlewares";
 
 
 const app = express();
@@ -30,18 +30,19 @@ const proxyOptions = {
 }
 
 // Proxy for design service
-app.use("/v1/design", proxy(config.designURL, {
+app.use("/v1/design",authMiddleware, proxy(config.designURL, {
     ...proxyOptions,
     // parseReqBody: true,
 }));
 
 // Proxy for upload service
-app.use("/v1/media", proxy(config.uploadURL, {
+app.use("/v1/media",authMiddleware, proxy(config.uploadURL, {
     ...proxyOptions,
     parseReqBody: false,
 }));
 
-app.use("/v1/subscription", proxy(config.subscriptionURL, {
+// need some extra logic for auth middleware
+app.use("/v1/subscription",authMiddleware, proxy(config.subscriptionURL, {
     ...proxyOptions,
     // parseReqBody: false,
 }));

@@ -23,7 +23,7 @@ async function authMiddleware(req: Request, res: Response, next: NextFunction) {
 
     if (!token) {
         const statusCode = StatusCodes.UNAUTHORIZED;
-        const msg = "Access denied!!";
+        const msg = "Access denied. Please provide token";
         return next(new ApiErrorResponse(statusCode, msg));
     }
         const ticket = await client.verifyIdToken({
@@ -49,8 +49,10 @@ async function authMiddleware(req: Request, res: Response, next: NextFunction) {
         req.headers["x-user-name"] = payload?.name
 
         next(); // pass controll to other middleware
-    } catch (error) {
-        next(error);
+    } catch (error:any) {
+        const msg = error.message;
+        const statusCode = error.statusCode || StatusCodes.UNAUTHORIZED;
+        next(new ApiErrorResponse(statusCode, msg));
     }
 }
 
