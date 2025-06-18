@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root{
+    --login-screen-main-color: #f4f0fe;
+    --sidebar-text-color: #695197; 
+    --sidebar-icon-color: #695197; 
+    --sidebar-icon-hover-color: #d0ccd7;
+}
+
+.sidebar-text {
+    @apply text-[var(--sidebar-text-color)] font-medium text-xs;
+}
